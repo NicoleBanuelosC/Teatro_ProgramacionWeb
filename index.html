@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teatro Pleasantville — Compañía teatral</title>
+<meta name="description" content="Sistema de gestión de producciones, membresía y patrocinios de Teatro Pleasantville.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="container">
+    <a href="index.html" class="brand" style="order:1;">
+      <span class="brand__mark">TP</span>
+      Teatro Pleasantville
+    </a>
+    <input type="checkbox" id="nav-check" class="nav-check" hidden>
+    <ul class="nav-links" style="order:2;">
+      <li><a href="#temporada">Temporada</a></li>
+      <li><a href="#compania">Compañía</a></li>
+      <li><a href="#patrocinio">Patrocinio</a></li>
+      <li><a href="registro.html">Únete</a></li>
+      <li class="mobile-only"><a href="login.html">Iniciar sesión</a></li>
+      <li class="mobile-only"><a href="registro.html">Registrarme</a></li>
+    </ul>
+    <div class="nav-actions" style="order:3;">
+      <a href="login.html" class="btn btn-ghost">Iniciar sesión</a>
+      <a href="registro.html" class="btn btn-primary">Registrarme</a>
+    </div>
+    <label for="nav-check" class="nav-toggle" aria-label="Abrir menú" style="order:4;">☰</label>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="soft-glow" style="padding: 6rem 0 5rem; border-bottom:1px solid var(--line);">
+  <div class="container" style="display:grid; grid-template-columns: 1.2fr .8fr; gap: 3rem; align-items:end;">
+    <div>
+      <p style="color:var(--wine); font-family:var(--script); font-size:1.9rem; margin-bottom:.6rem; line-height:1;">Temporada 2025 – 2026</p>
+      <h1 style="font-size: var(--step-3); max-width: 14ch; font-style:italic;">El escenario empieza detrás del telón.</h1>
+      <p style="font-size:1.05rem; max-width:48ch; margin-top:1.2rem;">
+        Teatro Pleasantville organiza las producciones, elencos, boletaje y patrocinios de nuestra compañía en un solo lugar —
+        desde el guion hasta la última función.
+      </p>
+      <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;">
+        <a href="registro.html" class="btn btn-primary">Quiero unirme al elenco</a>
+        <a href="#temporada" class="btn btn-ghost">Ver cartelera</a>
+      </div>
+    </div>
+    <div style="border:1px solid var(--line); border-radius: var(--radius); padding:1.6rem; background: var(--panel); box-shadow: var(--shadow-soft);">
+      <p style="color:var(--gold-soft); font-size:.8rem; letter-spacing:.05em; text-transform:uppercase; margin-bottom:1rem; font-weight:600;">Próximo estreno</p>
+      <h3 style="font-size:1.5rem; margin-bottom:.3rem; font-style:italic;">Bodas de Sangre</h3>
+      <p style="margin-bottom:1.2rem;">Dirección de J. Ortega · Sala principal</p>
+      <div style="display:flex; justify-content:space-between; font-size:.85rem; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:1rem;">
+        <span>14 marzo 2026</span>
+        <span>20:00 hrs</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TEMPORADA -->
+<section id="temporada" style="padding: 5rem 0;">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; gap:1rem; flex-wrap:wrap;">
+      <div>
+        <h2 style="font-size:var(--step-2);">Cartelera de la temporada</h2>
+        <p>Cuatro producciones en escena, de la comedia clásica al drama contemporáneo.</p>
+      </div>
+      <a href="login.html" class="btn btn-ghost">Comprar boletos</a>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1.2rem;">
+      <article style="border:1px solid var(--line); border-radius:var(--radius); padding:1.4rem; background:var(--panel);">
+        <p style="color:var(--gold-soft); font-size:.78rem; margin-bottom:.6rem;">Otoño 2025</p>
+        <h3 style="font-size:1.15rem; margin-bottom:.4rem;">La Casa de Bernarda Alba</h3>
+        <p style="font-size:.88rem; margin-bottom:0;">Dir. M. Reyes</p>
+      </article>
+      <article style="border:1px solid var(--line); border-radius:var(--radius); padding:1.4rem; background:var(--panel);">
+        <p style="color:var(--gold-soft); font-size:.78rem; margin-bottom:.6rem;">Invierno 2025</p>
+        <h3 style="font-size:1.15rem; margin-bottom:.4rem;">El Avaro</h3>
+        <p style="font-size:.88rem; margin-bottom:0;">Dir. C. Villaseñor</p>
+      </article>
+      <article style="border:1px solid var(--line); border-radius:var(--radius); padding:1.4rem; background:var(--panel);">
+        <p style="color:var(--gold-soft); font-size:.78rem; margin-bottom:.6rem;">Primavera 2026</p>
+        <h3 style="font-size:1.15rem; margin-bottom:.4rem;">Bodas de Sangre</h3>
+        <p style="font-size:.88rem; margin-bottom:0;">Dir. J. Ortega</p>
+      </article>
+      <article style="border:1px solid var(--line); border-radius:var(--radius); padding:1.4rem; background:var(--panel);">
+        <p style="color:var(--gold-soft); font-size:.78rem; margin-bottom:.6rem;">Verano 2026</p>
+        <h3 style="font-size:1.15rem; margin-bottom:.4rem;">Yerma</h3>
+        <p style="font-size:.88rem; margin-bottom:0;">Dir. M. Reyes</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMPAÑÍA -->
+<section id="compania" style="padding: 5rem 0; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap:3rem; align-items:center;">
+    <div>
+      <h2 style="font-size:var(--step-2);">Una compañía, un solo panel.</h2>
+      <p>
+        Miembros, elenco, personajes, transacciones y patrocinadores conviven en un panel administrativo
+        pensado para quien organiza —no solo quien actúa.
+      </p>
+      <ul style="list-style:none; padding:0; margin-top:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+        <li style="display:flex; gap:.8rem;"><span style="color:var(--gold);">—</span> Alta y gestión de miembros y oficiales</li>
+        <li style="display:flex; gap:.8rem;"><span style="color:var(--gold);">—</span> Control de producciones, obras y repartos</li>
+        <li style="display:flex; gap:.8rem;"><span style="color:var(--gold);">—</span> Boletaje, asientos y patrocinios en un mismo lugar</li>
+      </ul>
+      <a href="login.html" class="btn btn-primary" style="margin-top:2rem;">Entrar al panel</a>
+    </div>
+    <div style="border:1px solid var(--line); border-radius:var(--radius); background:var(--panel); padding:1.5rem;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div style="border:1px solid var(--line); border-radius:var(--radius); padding:1rem;">
+          <p style="color:var(--gold-soft); font-family:var(--serif); font-size:1.6rem; margin:0;">86</p>
+          <p style="font-size:.8rem; margin:0;">Miembros activos</p>
+        </div>
+        <div style="border:1px solid var(--line); border-radius:var(--radius); padding:1rem;">
+          <p style="color:var(--gold-soft); font-family:var(--serif); font-size:1.6rem; margin:0;">12</p>
+          <p style="font-size:.8rem; margin:0;">Producciones / año</p>
+        </div>
+        <div style="border:1px solid var(--line); border-radius:var(--radius); padding:1rem;">
+          <p style="color:var(--gold-soft); font-family:var(--serif); font-size:1.6rem; margin:0;">24</p>
+          <p style="font-size:.8rem; margin:0;">Patrocinadores</p>
+        </div>
+        <div style="border:1px solid var(--line); border-radius:var(--radius); padding:1rem;">
+          <p style="color:var(--gold-soft); font-family:var(--serif); font-size:1.6rem; margin:0;">3.4k</p>
+          <p style="font-size:.8rem; margin:0;">Boletos / temporada</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABCC (avance) -->
+<section id="abcc-obras" style="padding: 5rem 0;">
+  <div class="container">
+    <div style="margin-bottom:2rem;">
+      <p style="color:var(--wine); font-family:var(--script); font-size:1.9rem; margin-bottom:.3rem; line-height:1;">Avance de proyecto</p>
+      <h2 style="font-size:var(--step-2);">Alta, baja, cambio y consulta de obras</h2>
+      <p>Un vistazo a cómo administraremos el catálogo de obras de la compañía (vista de ejemplo, aún no conectada a base de datos).</p>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-card__head">
+        <h2>Obras registradas</h2>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr><th>Título</th><th>Autor</th><th>Tipo</th><th>Actos</th><th>Acciones</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>La Casa de Bernarda Alba</td><td>Federico García Lorca</td><td>Drama</td><td>3</td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-obra" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>El Avaro</td><td>Molière</td><td>Comedia</td><td>5</td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-obra" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Bodas de Sangre</td><td>Federico García Lorca</td><td>Tragedia</td><td>3</td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-obra" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-card__foot"><span>Consulta: este listado muestra las obras registradas (datos de ejemplo).</span></div>
+    </div>
+
+    <div class="panel-card" id="alta-obra" style="margin-top:1.6rem;">
+      <div class="panel-card__head"><h2>Alta de obra</h2></div>
+      <form style="padding:1.4rem;" action="index.html" method="get">
+        <div class="field">
+          <label for="titulo-obra">Título</label>
+          <input type="text" id="titulo-obra" name="titulo" placeholder="Título de la obra" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="autor-obra">Autor</label>
+            <input type="text" id="autor-obra" name="autor" placeholder="Nombre del autor" required>
+          </div>
+          <div class="field">
+            <label for="actos-obra">Número de actos</label>
+            <input type="number" id="actos-obra" name="actos" min="1" max="10" placeholder="3">
+          </div>
+        </div>
+        <div class="field">
+          <label for="tipo-obra">Tipo</label>
+          <select id="tipo-obra" name="tipo">
+            <option>Drama</option>
+            <option>Comedia</option>
+            <option>Tragedia</option>
+            <option>Musical</option>
+          </select>
+        </div>
+        <div class="modal-actions" style="justify-content:flex-start;">
+          <button type="submit" class="btn btn-primary">Guardar obra</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PATROCINIO -->
+<section id="patrocinio" style="padding: 5rem 0; text-align:center;">
+  <div class="container" style="max-width:640px; margin-inline:auto;">
+    <h2 style="font-size:var(--step-2);">Vuélvete patrocinador</h2>
+    <p style="margin-inline:auto;">Cada temporada depende de quienes creen en las tablas tanto como nosotros. Súmate como patrocinador o patrocinador individual.</p>
+    <a href="registro.html" class="btn btn-gold" style="margin-top:1rem;">Quiero patrocinar</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:1rem; display:inline-flex;">
+          <span class="brand__mark">TP</span> Teatro Pleasantville
+        </a>
+        <p style="font-size:.88rem;">Sistema interno de gestión de producciones y membresía de la compañía.</p>
+      </div>
+      <div>
+        <h4>Sitio</h4>
+        <ul>
+          <li><a href="index.html">Principal</a></li>
+          <li><a href="login.html">Iniciar sesión</a></li>
+          <li><a href="registro.html">Registro</a></li>
+          <li><a href="recuperar.html">Recuperar acceso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compañía</h4>
+        <ul>
+          <li><a href="#temporada">Temporada</a></li>
+          <li><a href="#compania">Nosotros</a></li>
+          <li><a href="#patrocinio">Patrocinio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Proyecto / entrega</h4>
+        <ul>
+          <li><a href="https://trello.com/invite/b/6a9b7a7c71662aa46cb63696/ATTI06f23db15c94c0b05f24b35b68a923f17906DCCF/teatroprogramacionweb" target="_blank" rel="noopener">Tablero Trello del proyecto</a></li>
+          <li>Preproducción: <code>10.0.0.10</code></li>
+          <li>Producción: <code>10.0.0.20</code></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Teatro Pleasantville. Proyecto académico.</span>
+      <ul class="footer-links-inline">
+        <li><a href="https://trello.com/invite/b/6a9b7a7c71662aa46cb63696/ATTI06f23db15c94c0b05f24b35b68a923f17906DCCF/teatroprogramacionweb" target="_blank" rel="noopener">Tablero del proyecto ↗</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+</html>

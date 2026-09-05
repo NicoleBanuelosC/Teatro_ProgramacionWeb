@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperar acceso — Teatro Pleasantville</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <aside class="auth-side">
+    <div class="auth-side__content">
+      <a href="index.html" class="brand" style="color:var(--cream);">
+        <span class="brand__mark" style="border-color:var(--gold-soft); color:var(--gold-soft);">TP</span>
+        Teatro Pleasantville
+      </a>
+    </div>
+    <blockquote class="auth-side__quote">
+      Un olvido de contraseña no debería cerrarte el telón.
+      <cite>Recupera tu acceso en un par de pasos.</cite>
+    </blockquote>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1>Recupera tu acceso</h1>
+      <p class="lede">Indica tu correo o usuario registrado y te enviaremos instrucciones para restablecer tu acceso.</p>
+
+      <div class="alert">
+        Si tu correo está registrado en Teatro Pleasantville, recibirás un enlace para restablecer tu contraseña en los próximos minutos.
+      </div>
+
+      <form action="login.html" method="get">
+        <div class="field">
+          <label for="usuario">Usuario o correo electrónico</label>
+          <input type="text" id="usuario" name="usuario" placeholder="[email protected]" required>
+        </div>
+
+        <div class="field">
+          <label for="metodo">Enviar instrucciones por</label>
+          <select id="metodo" name="metodo">
+            <option value="correo">Correo electrónico</option>
+            <option value="sms">SMS al teléfono registrado</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Enviar instrucciones</button>
+      </form>
+
+      <div class="divider-word">¿recordaste tu contraseña?</div>
+
+      <a href="login.html" class="btn btn-ghost btn-block">Volver a iniciar sesión</a>
+
+      <div class="form-foot-link">
+        ¿Aún no tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel — Teatro Pleasantville</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="panel-shell">
+
+  <aside class="panel-side">
+    <div class="panel-brand">
+      <span class="brand__mark">TP</span> Teatro Pleasantville
+    </div>
+
+    <ul class="panel-nav">
+      <li class="group-label">General</li>
+      <li><a href="#" class="active"><span class="dot"></span> Panel principal</a></li>
+
+      <li class="group-label">Producción</li>
+      <li><a href="#"><span class="dot"></span> Producciones</a></li>
+      <li><a href="#"><span class="dot"></span> Obras</a></li>
+      <li><a href="#"><span class="dot"></span> Representaciones</a></li>
+      <li><a href="#"><span class="dot"></span> Participación / reparto</a></li>
+
+      <li class="group-label">Membresía</li>
+      <li><a href="#"><span class="dot"></span> Miembros</a></li>
+      <li><a href="#"><span class="dot"></span> Oficiales</a></li>
+      <li><a href="#"><span class="dot"></span> Direcciones</a></li>
+
+      <li class="group-label">Taquilla</li>
+      <li><a href="#"><span class="dot"></span> Boletos</a></li>
+      <li><a href="#"><span class="dot"></span> Asientos</a></li>
+      <li><a href="#"><span class="dot"></span> Transacciones</a></li>
+
+      <li class="group-label">Patrocinio</li>
+      <li><a href="#"><span class="dot"></span> Patronos</a></li>
+      <li><a href="#"><span class="dot"></span> Patrocinadores</a></li>
+      <li><a href="#"><span class="dot"></span> Patrocinios</a></li>
+    </ul>
+
+    <div class="panel-side__foot">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span>María Reyes<br><small style="color:var(--cream-dim);">Directora artística</small></span>
+        <a href="login.html" class="icon-btn" title="Cerrar sesión">⎋</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="panel-main">
+    <div class="panel-topbar">
+      <div style="display:flex; align-items:center; gap:.8rem;">
+        <div>
+          <h1>Panel principal</h1>
+          <p>Alta, baja, cambio y consulta de producciones de la temporada.</p>
+        </div>
+      </div>
+      <a href="index.html" class="btn btn-ghost">Ver sitio público</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="num">12</div><div class="label">Producciones registradas</div></div>
+      <div class="stat-card"><div class="num">86</div><div class="label">Miembros activos</div></div>
+      <div class="stat-card"><div class="num">24</div><div class="label">Patrocinadores</div></div>
+      <div class="stat-card"><div class="num">3,412</div><div class="label">Boletos vendidos</div></div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-card__head">
+        <h2>Producciones</h2>
+        <div class="tab-row">
+          <button type="button" class="active">Todas</button>
+          <button type="button">Activas</button>
+          <button type="button">Planeación</button>
+          <button type="button">Finalizadas</button>
+        </div>
+      </div>
+
+      <div class="search-add-row">
+        <input type="text" id="table-search" class="search-box" placeholder="Buscar por obra, director o temporada…">
+        <a href="#alta-produccion" class="btn btn-primary">+ Nueva producción</a>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Obra</th>
+              <th>Temporada</th>
+              <th>Año</th>
+              <th>Director / Productor</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>La Casa de Bernarda Alba</td>
+              <td>Otoño</td>
+              <td>2025</td>
+              <td>M. Reyes</td>
+              <td><span class="badge badge-on">Activa</span></td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-produccion" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Bodas de Sangre</td>
+              <td>Primavera</td>
+              <td>2026</td>
+              <td>J. Ortega</td>
+              <td><span class="badge badge-off">Planeación</span></td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-produccion" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>El Avaro</td>
+              <td>Invierno</td>
+              <td>2025</td>
+              <td>C. Villaseñor</td>
+              <td><span class="badge">Finalizada</span></td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-produccion" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Yerma</td>
+              <td>Verano</td>
+              <td>2026</td>
+              <td>M. Reyes</td>
+              <td><span class="badge badge-on">Activa</span></td>
+              <td>
+                <div class="row-actions">
+                  <a href="#alta-produccion" class="icon-btn" title="Editar">✎</a>
+                  <a href="#" class="icon-btn danger" title="Eliminar">✕</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-card__foot">
+        <span>Mostrando registros de demostración — reemplaza por datos reales de tu base de datos.</span>
+      </div>
+    </div>
+
+    <!-- ALTA (formulario de alta / edición, fijo en la página, sin modal) -->
+    <div class="panel-card" id="alta-produccion" style="margin-top:1.6rem;">
+      <div class="panel-card__head">
+        <h2>Alta de producción</h2>
+      </div>
+      <form style="padding:1.4rem;">
+        <div class="field">
+          <label for="obra">Obra</label>
+          <input type="text" id="obra" name="obra" placeholder="Título de la obra" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="temporada">Temporada</label>
+            <select id="temporada" name="temporada">
+              <option>Otoño</option>
+              <option>Invierno</option>
+              <option>Primavera</option>
+              <option>Verano</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="anio">Año</label>
+            <input type="number" id="anio" name="anio" min="2000" max="2100" placeholder="2026" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="director">Director / productor</label>
+          <input type="text" id="director" name="director" placeholder="Nombre del director" required>
+        </div>
+        <div class="field">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado">
+            <option value="planeacion">Planeación</option>
+            <option value="activa">Activa</option>
+            <option value="finalizada">Finalizada</option>
+          </select>
+        </div>
+        <div class="modal-actions" style="justify-content:flex-start;">
+          <button type="submit" class="btn btn-primary">Guardar producción</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear cuenta — Teatro Pleasantville</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <aside class="auth-side">
+    <div class="auth-side__content">
+      <a href="index.html" class="brand" style="color:var(--cream);">
+        <span class="brand__mark" style="border-color:var(--gold-soft); color:var(--gold-soft);">TP</span>
+        Teatro Pleasantville
+      </a>
+    </div>
+    <blockquote class="auth-side__quote">
+      Cada temporada empieza con un nombre nuevo en la lista de reparto.
+      <cite>Regístrate y súmate a la próxima producción.</cite>
+    </blockquote>
+    <p style="position:relative; z-index:1; font-size:.8rem; color:var(--cream-dim);">Miembros, elenco técnico y patrocinadores se registran aquí.</p>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1>Crea tu cuenta</h1>
+      <p class="lede">Regístrate para participar en producciones, comprar boletos o patrocinar una temporada.</p>
+
+      <form action="login.html" method="get">
+        <div class="field-row">
+          <div class="field">
+            <label for="nombre">Nombre(s)</label>
+            <input type="text" id="nombre" name="nombre" placeholder="María" required>
+          </div>
+          <div class="field">
+            <label for="apellido">Apellido paterno</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Reyes" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="[email protected]" required>
+        </div>
+
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+52 492 000 0000">
+        </div>
+
+        <div class="field">
+          <label for="rol">Me registro como</label>
+          <select id="rol" name="rol">
+            <option value="miembro">Miembro del elenco / equipo</option>
+            <option value="patrocinador">Patrocinador</option>
+            <option value="publico">Solo compra de boletos</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" required minlength="8">
+          </div>
+          <div class="field">
+            <label for="password_confirm">Confirmar contraseña</label>
+            <input type="password" id="password_confirm" name="password_confirm" placeholder="Repite tu contraseña" required minlength="8">
+          </div>
+        </div>
+
+        <div class="check-row">
+          <input type="checkbox" id="terminos" required>
+          <label for="terminos">Acepto el aviso de privacidad y el reglamento interno de la compañía.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+      </form>
+
+      <div class="form-foot-link">
+        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

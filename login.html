@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión — Teatro Pleasantville</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <aside class="auth-side">
+    <div class="auth-side__content">
+      <a href="index.html" class="brand" style="color:var(--cream);">
+        <span class="brand__mark" style="border-color:var(--gold-soft); color:var(--gold-soft);">TP</span>
+        Teatro Pleasantville
+      </a>
+    </div>
+    <blockquote class="auth-side__quote">
+      “Todo el mundo es un escenario, y todos los hombres y mujeres, meros actores.”
+      <cite>— usado como epígrafe de bienvenida al panel</cite>
+    </blockquote>
+    <p style="position:relative; z-index:1; font-size:.8rem; color:var(--cream-dim);">Panel interno de miembros, elenco y producción.</p>
+  </aside>
+
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1>Inicia sesión</h1>
+      <p class="lede">Accede al panel para gestionar producciones, membresía y boletaje.</p>
+
+      <form action="index.html" method="get">
+        <div class="field">
+          <label for="usuario">Usuario o correo electrónico</label>
+          <input type="text" id="usuario" name="usuario" placeholder="[email protected]" required>
+        </div>
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+
+        <div class="between-link">
+          <label style="display:flex; align-items:center; gap:.5rem; color:var(--cream-dim);">
+            <input type="checkbox" style="accent-color:var(--gold);"> Recordarme
+          </label>
+          <a href="recuperar.html">¿Olvidaste tu acceso?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+      </form>
+
+      <div class="form-foot-link">
+        ¿Aún no tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>
