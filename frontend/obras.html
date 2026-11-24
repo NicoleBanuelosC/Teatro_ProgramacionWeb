@@ -246,7 +246,7 @@
       if (!confirm(`¿Eliminar la obra "${titulo}"?`)) return;
       const r = await fetch(`${API}?id=${id}`, { method: 'DELETE' });
       const j = await r.json();
-      alert(j.ok ? '🗑️ ' + j.msg : '⛔ ' + j.msg);
+      alert(j.ok ? '🗑 ' + j.msg : '⛔ ' + j.msg);
       if (j.ok) cargarTabla();
     }//eliminar
 
