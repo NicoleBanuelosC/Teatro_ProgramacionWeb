@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel — Obras | Teatro Pleasantville</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="panel-shell">
+    <aside class="panel-side">
+      <div class="panel-brand"><span class="brand__mark">TP</span> Teatro Pleasantville</div>
+      <ul class="panel-nav">
+        <li class="group-label">General</li>
+        <li><a href="panel.html"><span class="dot"></span> Panel principal</a></li>
+        <li class="group-label">Producción</li>
+        <li><a href="panel.html"><span class="dot"></span> Producciones</a></li>
+        <li><a href="obras.html" class="active"><span class="dot"></span> Obras</a></li>
+        <li><a href="#"><span class="dot"></span> Representaciones</a></li>
+        <li class="group-label">Membresía</li>
+        <li><a href="#"><span class="dot"></span> Miembros</a></li>
+        <li class="group-label">Taquilla</li>
+        <li><a href="#"><span class="dot"></span> Boletos</a></li>
+      </ul>
+      <div class="panel-side__foot">
+        <small>Sesión activa</small><br><strong>María Reyes</strong><br>
+        <a href="login.html" style="color: var(--gold-soft); font-size: .8rem;">Cerrar sesión</a>
+      </div>
+    </aside>
+
+    <main class="panel-main">
+      <div class="panel-topbar">
+        <div>
+          <h1>Catálogo de Obras</h1>
+          <p>Alta, baja, cambio y consulta de obras del repertorio.</p>
+        </div>
+        <a href="index.html" class="btn btn-ghost">Ver sitio público</a>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num" id="stat-total">0</div><div class="label">Obras registradas</div></div>
+        <div class="stat-card"><div class="num" id="stat-dramas">0</div><div class="label">Dramas</div></div>
+        <div class="stat-card"><div class="num" id="stat-comedias">0</div><div class="label">Comedias</div></div>
+        <div class="stat-card"><div class="num" id="stat-actos">0</div><div class="label">Total de actos</div></div>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-card__head">
+          <h2>Listado de obras</h2>
+        </div>
+
+        <div style="padding: 1rem 1.4rem; background: var(--bg-alt); border-bottom: 1px solid var(--line);">
+          <p style="margin: 0 0 .6rem; font-size: .82rem; color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: .04em;">Buscar por:</p>
+          <div style="display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: .8rem;">
+            <label style="display: flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--ink); cursor: pointer;">
+              <input type="radio" name="criterio" value="titulo" checked style="accent-color: var(--wine);" /> Título
+            </label>
+            <label style="display: flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--ink); cursor: pointer;">
+              <input type="radio" name="criterio" value="autor" style="accent-color: var(--wine);" /> Autor
+            </label>
+            <label style="display: flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--ink); cursor: pointer;">
+              <input type="radio" name="criterio" value="tipo" style="accent-color: var(--wine);" /> Tipo
+            </label>
+          </div>
+          <div class="search-add-row" style="padding: 0; background: transparent;">
+            <input type="text" class="search-box" id="search-input" placeholder="Escribe para buscar..." />
+            <button class="btn btn-primary" id="btn-nueva-obra">+ Nueva obra</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Tipo</th>
+              <th>Actos</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="5" style="text-align:center; padding: 2rem;">Cargando obras...</td></tr>
+          </tbody>
+        </table>
+
+        <div class="panel-card__foot">
+          <span>Datos cargados desde la base de datos.</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- altas y cambios -->
+  <div class="modal-backdrop">
+    <div class="modal">
+      <h3 id="modal-title">Alta de obra</h3>
+      <form id="form-obra">
+        <input type="hidden" id="f_id" value="" />
+        <div class="field">
+          <label for="f_titulo">Título</label>
+          <input type="text" id="f_titulo" required placeholder="Ej. La Casa de Bernarda Alba" />
+        </div>
+        <div class="field">
+          <label for="f_autor">Autor</label>
+          <input type="text" id="f_autor" required placeholder="Ej. Federico García Lorca" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f_tipo">Tipo</label>
+            <select id="f_tipo" required>
+              <option value="drama">Drama</option>
+              <option value="comedia">Comedia</option>
+              <option value="tragedia">Tragedia</option>
+              <option value="musical">Musical</option>
+              <option value="infantil">Infantil</option>
+              <option value="romance">Romance</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f_actos">Número de actos</label>
+            <input type="number" id="f_actos" min="1" max="10" required placeholder="3" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar obra</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API = '../api/obras.php';
+    let criterioBusqueda = 'titulo';
+
+    //alta
+      document.getElementById('btn-nueva-obra').addEventListener('click', () => {
+      document.getElementById('modal-title').textContent = 'Alta de obra';
+      document.getElementById('form-obra').reset();
+      document.getElementById('f_id').value = '';
+      document.querySelector('.modal-backdrop').classList.add('open');
+    });
+
+    document.getElementById('btn-cancelar').addEventListener('click', () => {
+      document.querySelector('.modal-backdrop').classList.remove('open');
+    });
+
+    document.querySelector('.modal-backdrop').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-backdrop')) {
+        document.querySelector('.modal-backdrop').classList.remove('open');
+      }//if
+    });
+
+    //cargar tablita
+    async function cargarTabla() {
+      const q = document.getElementById('search-input').value || '';
+      const r = await fetch(`${API}?q=${encodeURIComponent(q)}&criterio=${criterioBusqueda}`);
+      const j = await r.json();
+      const tbody = document.querySelector('.data-table tbody');
+      
+      tbody.innerHTML = j.data.map(o => `
+        <tr>
+          <td><strong>${o.titulo}</strong></td>
+          <td>${o.autor}</td>
+          <td><span class="badge">${o.tipo.replace('_', ' ').toUpperCase()}</span></td>
+          <td>${o.numero_actos}</td>
+          <td class="row-actions">
+            <button class="icon-btn" onclick="editar(${o.id_obra})" title="Editar">✎</button>
+            <button class="icon-btn danger" onclick="eliminar(${o.id_obra}, '${o.titulo.replace(/'/g,"\\'")}')" title="Eliminar">✕</button>
+          </td>
+        </tr>`).join('') || '<tr><td colspan="5">Sin resultados.</td></tr>';
+
+      document.getElementById('stat-total').textContent = j.data.length;
+      document.getElementById('stat-dramas').textContent = j.data.filter(o => o.tipo === 'drama').length;
+      document.getElementById('stat-comedias').textContent = j.data.filter(o => o.tipo === 'comedia').length;
+      document.getElementById('stat-actos').textContent = j.data.reduce((acc, o) => acc + parseInt(o.numero_actos), 0);
+    }//CargarTabla
+
+    // validacion
+    function validarForm() {
+      const errs = [];
+      const titulo = document.getElementById('f_titulo').value.trim();
+      const autor = document.getElementById('f_autor').value.trim();
+      const actos = document.getElementById('f_actos').value;
+
+      const soloLetrasYPuntos = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s.]+$/;
+
+      if (!titulo) {
+        errs.push('El título es obligatorio.');
+      } else if (!soloLetrasYPuntos.test(titulo)) {
+        errs.push('El título solo permite letras, espacios y puntos (sin números ni símbolos).');
+      }//else-if
+
+      if (!autor) {
+        errs.push('El autor es obligatorio.');
+      } else if (!soloLetrasYPuntos.test(autor)) {
+        errs.push('El autor solo permite letras, espacios y puntos (sin números ni símbolos).');
+      }//else -if
+
+      if (!/^\d+$/.test(actos) || actos < 1 || actos > 10) {
+        errs.push('Número de actos inválido (1-10).');
+      }//if
+
+      if (errs.length) { alert('⚠️ Corrige:\n• ' + errs.join('\n• ')); return false; }
+      return true;
+    }//validar
+
+    // Guardar (Alta / Cambio)
+    async function guardar(e) {
+      e.preventDefault();
+      if (!validarForm()) return;
+      const id = document.getElementById('f_id').value;
+      const body = JSON.stringify({
+        titulo: document.getElementById('f_titulo').value,
+        autor: document.getElementById('f_autor').value,
+        tipo: document.getElementById('f_tipo').value,
+        numero_actos: document.getElementById('f_actos').value
+      });
+      const r = await fetch(id ? `${API}?id=${id}` : API, {
+        method: id ? 'PUT' : 'POST', headers: {'Content-Type':'application/json'}, body
+      });
+      const j = await r.json();
+      if (j.ok) { 
+        document.querySelector('.modal-backdrop').classList.remove('open'); 
+        cargarTabla(); 
+      } else alert('❌ ' + (j.errores ? j.errores.join('\n') : j.msg));
+    }//giardar
+
+    // editar
+    async function editar(id) {
+      const j = await (await fetch(API)).json();
+      const o = j.data.find(x => x.id_obra == id);
+      if (!o) return;
+      document.getElementById('modal-title').textContent = 'Editar obra';
+      document.getElementById('f_id').value = id;
+      document.getElementById('f_titulo').value = o.titulo;
+      document.getElementById('f_autor').value = o.autor;
+      document.getElementById('f_tipo').value = o.tipo;
+      document.getElementById('f_actos').value = o.numero_actos;
+      document.querySelector('.modal-backdrop').classList.add('open');
+    }//Editar
+
+    // Eliminar
+    async function eliminar(id, titulo) {
+      if (!confirm(`¿Eliminar la obra "${titulo}"?`)) return;
+      const r = await fetch(`${API}?id=${id}`, { method: 'DELETE' });
+      const j = await r.json();
+      alert(j.ok ? '🗑️ ' + j.msg : '⛔ ' + j.msg);
+      if (j.ok) cargarTabla();
+    }//eliminar
+
+    document.querySelectorAll('input[name="criterio"]').forEach(r => r.addEventListener('change', () => {
+      criterioBusqueda = r.value;
+      cargarTabla();
+    }));
+
+    // Buscador
+    document.getElementById('search-input').addEventListener('input', () => { 
+      clearTimeout(window._t); 
+      window._t = setTimeout(cargarTabla, 300); 
+    });
+
+    document.getElementById('form-obra').addEventListener('submit', guardar);
+
+    cargarTabla();
+  </script>
+</body>
+</html>
