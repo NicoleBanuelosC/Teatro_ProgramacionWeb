@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+  <script>
+    if (!localStorage.getItem('teatro_token')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+  
   <div class="panel-shell">
     <aside class="panel-side">
       <div class="panel-brand"><span class="brand__mark">TP</span> Teatro Pleasantville</div>
@@ -23,8 +30,9 @@
         <li><a href="#"><span class="dot"></span> Boletos</a></li>
       </ul>
       <div class="panel-side__foot">
-        <small>Sesión activa</small><br><strong>María Reyes</strong><br>
-        <a href="login.html" style="color: var(--gold-soft); font-size: .8rem;">Cerrar sesión</a>
+        <small>Sesión activa</small><br>
+        <strong id="nombre-usuario">Cargando...</strong><br>
+        <a href="#" id="btn-logout" style="color: var(--gold-soft); font-size: .8rem;">Cerrar sesión</a>
       </div>
     </aside>
 
@@ -90,7 +98,7 @@
     </main>
   </div>
 
-  <!-- altas y cambios -->
+  <!-- Modal unificado (Alta / Cambio) -->
   <div class="modal-backdrop">
     <div class="modal">
       <h3 id="modal-title">Alta de obra</h3>
@@ -134,8 +142,41 @@
     const API = '../api/obras.php';
     let criterioBusqueda = 'titulo';
 
-    //alta
-      document.getElementById('btn-nueva-obra').addEventListener('click', () => {
+    // ✅ FUNCIÓN AUTH: envía el token JWT en cada petición
+    async function authFetch(url, options = {}) {
+      const token = localStorage.getItem('teatro_token');
+      options.headers = {
+        ...(options.headers || {}),
+        'Authorization': 'Bearer ' + token
+      };
+      const r = await fetch(url, options);
+      if (r.status === 401) {
+        localStorage.removeItem('teatro_token');
+        localStorage.removeItem('teatro_user');
+        window.location.href = 'login.html';
+        return;
+      }
+      return r.json();
+    }
+
+    // Mostrar nombre del usuario logueado
+    const user = JSON.parse(localStorage.getItem('teatro_user') || '{}');
+    if (user.nombre) {
+      document.getElementById('nombre-usuario').textContent = user.nombre;
+    }
+
+    // Cerrar sesión
+    document.getElementById('btn-logout').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (confirm('¿Cerrar sesión?')) {
+        localStorage.removeItem('teatro_token');
+        localStorage.removeItem('teatro_user');
+        window.location.href = 'login.html';
+      }
+    });
+
+    // Alta
+    document.getElementById('btn-nueva-obra').addEventListener('click', () => {
       document.getElementById('modal-title').textContent = 'Alta de obra';
       document.getElementById('form-obra').reset();
       document.getElementById('f_id').value = '';
@@ -149,14 +190,13 @@
     document.querySelector('.modal-backdrop').addEventListener('click', (e) => {
       if (e.target.classList.contains('modal-backdrop')) {
         document.querySelector('.modal-backdrop').classList.remove('open');
-      }//if
+      }
     });
 
-    //cargar tablita
+    // Cargar tabla
     async function cargarTabla() {
       const q = document.getElementById('search-input').value || '';
-      const r = await fetch(`${API}?q=${encodeURIComponent(q)}&criterio=${criterioBusqueda}`);
-      const j = await r.json();
+      const j = await authFetch(`${API}?q=${encodeURIComponent(q)}&criterio=${criterioBusqueda}`);
       const tbody = document.querySelector('.data-table tbody');
       
       tbody.innerHTML = j.data.map(o => `
@@ -175,36 +215,27 @@
       document.getElementById('stat-dramas').textContent = j.data.filter(o => o.tipo === 'drama').length;
       document.getElementById('stat-comedias').textContent = j.data.filter(o => o.tipo === 'comedia').length;
       document.getElementById('stat-actos').textContent = j.data.reduce((acc, o) => acc + parseInt(o.numero_actos), 0);
-    }//CargarTabla
+    }
 
-    // validacion
+    // Validación
     function validarForm() {
       const errs = [];
       const titulo = document.getElementById('f_titulo').value.trim();
       const autor = document.getElementById('f_autor').value.trim();
       const actos = document.getElementById('f_actos').value;
-
       const soloLetrasYPuntos = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s.]+$/;
 
-      if (!titulo) {
-        errs.push('El título es obligatorio.');
-      } else if (!soloLetrasYPuntos.test(titulo)) {
-        errs.push('El título solo permite letras, espacios y puntos (sin números ni símbolos).');
-      }//else-if
+      if (!titulo) errs.push('El título es obligatorio.');
+      else if (!soloLetrasYPuntos.test(titulo)) errs.push('El título solo permite letras, espacios y puntos.');
 
-      if (!autor) {
-        errs.push('El autor es obligatorio.');
-      } else if (!soloLetrasYPuntos.test(autor)) {
-        errs.push('El autor solo permite letras, espacios y puntos (sin números ni símbolos).');
-      }//else -if
+      if (!autor) errs.push('El autor es obligatorio.');
+      else if (!soloLetrasYPuntos.test(autor)) errs.push('El autor solo permite letras, espacios y puntos.');
 
-      if (!/^\d+$/.test(actos) || actos < 1 || actos > 10) {
-        errs.push('Número de actos inválido (1-10).');
-      }//if
+      if (!/^\d+$/.test(actos) || actos < 1 || actos > 10) errs.push('Número de actos inválido (1-10).');
 
       if (errs.length) { alert('⚠️ Corrige:\n• ' + errs.join('\n• ')); return false; }
       return true;
-    }//validar
+    }
 
     // Guardar (Alta / Cambio)
     async function guardar(e) {
@@ -217,19 +248,18 @@
         tipo: document.getElementById('f_tipo').value,
         numero_actos: document.getElementById('f_actos').value
       });
-      const r = await fetch(id ? `${API}?id=${id}` : API, {
+      const j = await authFetch(id ? `${API}?id=${id}` : API, {
         method: id ? 'PUT' : 'POST', headers: {'Content-Type':'application/json'}, body
       });
-      const j = await r.json();
       if (j.ok) { 
         document.querySelector('.modal-backdrop').classList.remove('open'); 
         cargarTabla(); 
       } else alert('❌ ' + (j.errores ? j.errores.join('\n') : j.msg));
-    }//giardar
+    }
 
-    // editar
+    // Editar
     async function editar(id) {
-      const j = await (await fetch(API)).json();
+      const j = await authFetch(API);
       const o = j.data.find(x => x.id_obra == id);
       if (!o) return;
       document.getElementById('modal-title').textContent = 'Editar obra';
@@ -239,17 +269,17 @@
       document.getElementById('f_tipo').value = o.tipo;
       document.getElementById('f_actos').value = o.numero_actos;
       document.querySelector('.modal-backdrop').classList.add('open');
-    }//Editar
+    }
 
     // Eliminar
     async function eliminar(id, titulo) {
       if (!confirm(`¿Eliminar la obra "${titulo}"?`)) return;
-      const r = await fetch(`${API}?id=${id}`, { method: 'DELETE' });
-      const j = await r.json();
-      alert(j.ok ? '🗑 ' + j.msg : '⛔ ' + j.msg);
+      const j = await authFetch(`${API}?id=${id}`, { method: 'DELETE' });
+      alert(j.ok ? '🗑️ ' + j.msg : '⛔ ' + j.msg);
       if (j.ok) cargarTabla();
-    }//eliminar
+    }
 
+    // Radio buttons
     document.querySelectorAll('input[name="criterio"]').forEach(r => r.addEventListener('change', () => {
       criterioBusqueda = r.value;
       cargarTabla();
